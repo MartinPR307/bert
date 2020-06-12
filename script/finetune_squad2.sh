@@ -41,6 +41,27 @@ elif [[ $1 == "gpu" ]]; then
     export PYTHONPATH="$PYTHONPATH:/home/lixiaoya/bert"
     DATA_DIR=/xiaoya/origin_data
     export CUDA_VISIBLE_DEVICES=0,1
+
+    python3 ${REPO_PATH}/run_squad.py \
+    --vocab_file=$BERT_DIR/vocab.txt \
+    --bert_config_file=$BERT_DIR/bert_config.json \
+    --init_checkpoint=$BERT_DIR/bert_model.ckpt \
+    --do_train=True \
+    --train_file=$SQUAD_DIR/train-v2.0.json \
+    --do_predict=True \
+    --predict_file=$SQUAD_DIR/dev-v2.0.json \
+    --train_batch_size=24 \
+    --learning_rate=3e-5 \
+    --num_train_epochs=2.0 \
+    --max_seq_length=384 \
+    --do_lower_case=False \
+    --doc_stride=128 \
+    --output_dir=${OUTPUT_DIR} \
+    --use_tpu=True \
+    --tpu_name=$TPU_NAME \
+    --version_2_with_negative=True
+else
+    echo "You NEED input the deivce signature such as tpu or gpu"
 fi
 
 
