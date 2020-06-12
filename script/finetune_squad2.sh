@@ -29,6 +29,7 @@ if [[ $1 == "tpu" ]]; then
     --learning_rate=3e-5 \
     --num_train_epochs=2.0 \
     --max_seq_length=384 \
+    --do_lower_case=False \
     --doc_stride=128 \
     --output_dir=${OUTPUT_DIR} \
     --use_tpu=True \
