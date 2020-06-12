@@ -39,8 +39,13 @@ if [[ $1 == "tpu" ]]; then
 elif [[ $1 == "gpu" ]]; then 
     REPO_PATH=/home/lixiaoya/bert
     export PYTHONPATH="$PYTHONPATH:/home/lixiaoya/bert"
-    DATA_DIR=/xiaoya/origin_data
+    DATA_DIR=/xiaoya
     export CUDA_VISIBLE_DEVICES=0,1
+    SQUAD_DIR=${DATA_DIR}/reading_comprehension/squad
+    BERT_DIR=${DATA_DIR}/pretrain_ckpt/cased_L-12_H-768_A-12
+    OUTPUT_DIR=${DATA_DIR}/export_dir/bert_squad2
+
+    mkdir -p ${OUTPUT_DIR}
 
     python3 ${REPO_PATH}/run_squad.py \
     --vocab_file=$BERT_DIR/vocab.txt \
@@ -57,8 +62,6 @@ elif [[ $1 == "gpu" ]]; then
     --do_lower_case=False \
     --doc_stride=128 \
     --output_dir=${OUTPUT_DIR} \
-    --use_tpu=True \
-    --tpu_name=$TPU_NAME \
     --version_2_with_negative=True
 else
     echo "You NEED input the deivce signature such as tpu or gpu"
