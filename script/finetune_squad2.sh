@@ -12,7 +12,7 @@ if [[ $1 == "tpu" ]]; then
     REPO_PATH=/home/xiaoyli1110/bert
     export TPU_NAME=xiaoya-tpu
     export PYTHONPATH="$PYTHONPATH:/home/xiaoyli1110/bert"
-    DATA_DIR=gs://xiaoy-data/data 
+    DATA_DIR=gs://xiaoy-data
     SQUAD_DIR=${DATA_DIR}/squad2
     BERT_DIR=${DATA_DIR}/cased_L-12_H-768_A-12
     OUTPUT_DIR=gs://corefqa-output/2020-06-10/spanbert-base 
