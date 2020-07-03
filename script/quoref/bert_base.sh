@@ -17,7 +17,7 @@ if [[ $1 == "tpu" ]]; then
     BERT_DIR=${DATA_DIR}/cased_L-12_H-768_A-12
     OUTPUT_DIR=gs://pretrain_task/bertbase_quoref
 
-    python3 ${REPO_PATH}/run_squad.py \
+    python3 ${REPO_PATH}/run_quoref.py \
     --vocab_file=$BERT_DIR/vocab.txt \
     --bert_config_file=$BERT_DIR/bert_config.json \
     --init_checkpoint=$BERT_DIR/bert_model.ckpt \
@@ -47,7 +47,7 @@ elif [[ $1 == "gpu" ]]; then
 
     mkdir -p ${OUTPUT_DIR}
 
-    python3 ${REPO_PATH}/run_squad.py \
+    python3 ${REPO_PATH}/run_quoref.py \
     --vocab_file=$BERT_DIR/vocab.txt \
     --bert_config_file=$BERT_DIR/bert_config.json \
     --init_checkpoint=$BERT_DIR/bert_model.ckpt \
