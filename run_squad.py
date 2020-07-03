@@ -261,8 +261,8 @@ def read_squad_examples(input_file, is_training):
         is_impossible = False
         if is_training:
 
-          if FLAGS.version_2_with_negative:
-            is_impossible = qa["is_impossible"]
+          # if FLAGS.version_2_with_negative:
+          #   is_impossible = qa["is_impossible"]
           if (len(qa["answers"]) != 1) and (not is_impossible):
             raise ValueError(
                 "For training, each question should have exactly 1 answer.")
@@ -299,8 +299,7 @@ def read_squad_examples(input_file, is_training):
             doc_tokens=doc_tokens,
             orig_answer_text=orig_answer_text,
             start_position=start_position,
-            end_position=end_position,
-            is_impossible=is_impossible)
+            end_position=end_position)
         examples.append(example)
 
   return examples
