@@ -33,7 +33,8 @@ if [[ $1 == "tpu" ]]; then
     --doc_stride=128 \
     --output_dir=${OUTPUT_DIR} \
     --use_tpu=True \
-    --tpu_name=$TPU_NAME 
+    --tpu_name=$TPU_NAME \
+    --version_2_with_negative=True
 
 elif [[ $1 == "gpu" ]]; then 
     REPO_PATH=/home/lixiaoya/bert
