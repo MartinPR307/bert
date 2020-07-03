@@ -265,7 +265,7 @@ def read_squad_examples(input_file, is_training):
           #   is_impossible = qa["is_impossible"]
           if (len(qa["answers"]) != 1) and (not is_impossible):
             # raise ValueError("For training, each question should have exactly 1 answer.")
-            raise ValueError(qa,） #  qa["answers"])
+            raise ValueError(qa) #  qa["answers"])
 
           is_impossible = False 
           if not is_impossible:
