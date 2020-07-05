@@ -10,7 +10,7 @@
 
 if [[ $1 == "tpu" ]]; then
     REPO_PATH=/home/xiaoyli1110/xiaoya/bert
-    export TPU_NAME=tpu1-v3
+    export TPU_NAME=tpu1-v3-vm-1
     export PYTHONPATH="$PYTHONPATH:/home/xiaoyli1110/xiaoya/bert"
     DATA_DIR=gs://xiaoy-data
     SQUAD_DIR=${DATA_DIR}/quoref
