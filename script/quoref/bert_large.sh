@@ -10,12 +10,13 @@
 
 if [[ $1 == "tpu" ]]; then
     REPO_PATH=/home/xiaoyli1110/xiaoya/bert
-    export TPU_NAME=tf-tpu-3
+    export TPU_NAME=tpu1-v3
     export PYTHONPATH="$PYTHONPATH:/home/xiaoyli1110/xiaoya/bert"
     DATA_DIR=gs://xiaoy-data
     SQUAD_DIR=${DATA_DIR}/quoref
     BERT_DIR=${DATA_DIR}/cased_L-24_H-1024_A-16
     OUTPUT_DIR=gs://pretrain_task/bertlarge_quoref
+    tpu_zone=europe-west4-a
 
     python3 ${REPO_PATH}/run_quoref.py \
     --vocab_file=$BERT_DIR/vocab.txt \
@@ -34,6 +35,7 @@ if [[ $1 == "tpu" ]]; then
     --output_dir=${OUTPUT_DIR} \
     --use_tpu=True \
     --tpu_name=$TPU_NAME \
+    --tpu_zone=${tpu_zone} \
     --version_2_with_negative=True
 
 elif [[ $1 == "gpu" ]]; then 
