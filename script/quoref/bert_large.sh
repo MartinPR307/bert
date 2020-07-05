@@ -17,6 +17,7 @@ if [[ $1 == "tpu" ]]; then
     BERT_DIR=${DATA_DIR}/cased_L-24_H-1024_A-16
     OUTPUT_DIR=gs://pretrain_task/bertlarge_quoref
     tpu_zone=europe-west4-a
+    gcp_project=xiaoyli-20-04-274510
 
     python3 ${REPO_PATH}/run_quoref.py \
     --vocab_file=$BERT_DIR/vocab.txt \
@@ -36,6 +37,7 @@ if [[ $1 == "tpu" ]]; then
     --use_tpu=True \
     --tpu_name=$TPU_NAME \
     --tpu_zone=${tpu_zone} \
+    --gcp_project=${gcp_project}
     --version_2_with_negative=True
 
 elif [[ $1 == "gpu" ]]; then 
