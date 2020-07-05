@@ -37,7 +37,7 @@ if [[ $1 == "tpu" ]]; then
     --use_tpu=True \
     --tpu_name=$TPU_NAME \
     --tpu_zone=${tpu_zone} \
-    --gcp_project=${gcp_project}
+    --gcp_project=${gcp_project} \
     --version_2_with_negative=True
 
 elif [[ $1 == "gpu" ]]; then 
