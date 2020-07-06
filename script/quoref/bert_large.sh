@@ -30,7 +30,7 @@ if [[ $1 == "tpu" ]]; then
     --train_batch_size=10 \
     --learning_rate=3e-5 \
     --num_train_epochs=10 \
-    --max_seq_length=512 \
+    --max_seq_length=384 \
     --do_lower_case=False \
     --doc_stride=128 \
     --output_dir=${OUTPUT_DIR} \
