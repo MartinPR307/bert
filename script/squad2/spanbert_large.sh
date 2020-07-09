@@ -5,7 +5,7 @@
 
 # Author: xiaoy li 
 # description:
-# 
+# 24 
 
 
 if [[ $1 == "tpu" ]]; then
@@ -25,8 +25,8 @@ if [[ $1 == "tpu" ]]; then
     --train_file=$SQUAD_DIR/train-v2.0.json \
     --do_predict=True \
     --predict_file=$SQUAD_DIR/dev-v2.0.json \
-    --train_batch_size=24 \
-    --learning_rate=3e-5 \
+    --train_batch_size=12 \
+    --learning_rate=2e-5 \
     --num_train_epochs=2.0 \
     --max_seq_length=384 \
     --do_lower_case=False \
