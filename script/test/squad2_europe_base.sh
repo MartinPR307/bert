@@ -16,7 +16,6 @@ if [[ $1 == "tpu" ]]; then
     SQUAD_DIR=${DATA_DIR}/squad2
     BERT_DIR=${DATA_DIR}/spanbert_base_tf
     OUTPUT_DIR=gs://output-europe/spanbert_base_squad2  
-    TPU_ZONE=europe-west4-a
 
     python3 ${REPO_PATH}/run_squad.py \
     --vocab_file=$BERT_DIR/vocab.txt \
@@ -35,7 +34,6 @@ if [[ $1 == "tpu" ]]; then
     --output_dir=${OUTPUT_DIR} \
     --use_tpu=True \
     --tpu_name=$TPU_NAME \
-    --tpu_zone=$TPU_ZONE \
     --version_2_with_negative=True
 
 elif [[ $1 == "gpu" ]]; then 
