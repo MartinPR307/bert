@@ -10,12 +10,12 @@
 
 if [[ $1 == "tpu" ]]; then
     REPO_PATH=/home/xiaoyli1110/xiaoya/bert
-    export TPU_NAME=tf-tpu
+    export TPU_NAME=tensorflow-tpu
     export PYTHONPATH="$PYTHONPATH:/home/xiaoyli1110/xiaoya/bert"
     DATA_DIR=gs://xiaoy-data
     SQUAD_DIR=${DATA_DIR}/squad2
-    BERT_DIR=${DATA_DIR}/cased_L-12_H-768_A-12
-    OUTPUT_DIR=gs://pretrain_task/bertbase_squad2  
+    BERT_DIR=${DATA_DIR}/spanbert_base_tf
+    OUTPUT_DIR=gs://pretrain_task/spanbert_base_squad2   
 
     python3 ${REPO_PATH}/run_squad.py \
     --vocab_file=$BERT_DIR/vocab.txt \
