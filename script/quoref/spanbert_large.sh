@@ -5,7 +5,7 @@
 
 # Author: xiaoy li 
 # description:
-# 24 
+# 
 
 
 if [[ $1 == "tpu" ]]; then
@@ -13,27 +13,29 @@ if [[ $1 == "tpu" ]]; then
     export TPU_NAME=tf-tpu
     export PYTHONPATH="$PYTHONPATH:/home/xiaoyli1110/xiaoya/bert"
     DATA_DIR=gs://xiaoy-data
-    SQUAD_DIR=${DATA_DIR}/squad2
+    SQUAD_DIR=${DATA_DIR}/quoref
     BERT_DIR=${DATA_DIR}/spanbert_large_tf
-    OUTPUT_DIR=gs://pretrain_task/spanbert_large_squad2_1e-5  
+    OUTPUT_DIR=gs://pretrain_task/spanbert_large_quoref
+    gcp_project=xiaoyli-20-04-274510
 
-    python3 ${REPO_PATH}/run_squad.py \
+    python3 ${REPO_PATH}/run_quoref.py \
     --vocab_file=$BERT_DIR/vocab.txt \
     --bert_config_file=$BERT_DIR/bert_config.json \
     --init_checkpoint=$BERT_DIR/bert_model.ckpt \
     --do_train=True \
-    --train_file=$SQUAD_DIR/train-v2.0.json \
+    --train_file=$SQUAD_DIR/quoref-train-v0.1.json \
     --do_predict=True \
-    --predict_file=$SQUAD_DIR/dev-v2.0.json \
-    --train_batch_size=8 \
-    --learning_rate=1e-5 \
-    --num_train_epochs=4.0 \
+    --predict_file=$SQUAD_DIR/quoref-dev-v0.1.json \
+    --train_batch_size=10 \
+    --learning_rate=3e-5 \
+    --num_train_epochs=10 \
     --max_seq_length=384 \
     --do_lower_case=False \
     --doc_stride=128 \
     --output_dir=${OUTPUT_DIR} \
     --use_tpu=True \
     --tpu_name=$TPU_NAME \
+    --gcp_project=${gcp_project} \
     --version_2_with_negative=True
 
 elif [[ $1 == "gpu" ]]; then 
@@ -47,7 +49,7 @@ elif [[ $1 == "gpu" ]]; then
 
     mkdir -p ${OUTPUT_DIR}
 
-    python3 ${REPO_PATH}/run_squad.py \
+    python3 ${REPO_PATH}/run_quoref.py \
     --vocab_file=$BERT_DIR/vocab.txt \
     --bert_config_file=$BERT_DIR/bert_config.json \
     --init_checkpoint=$BERT_DIR/bert_model.ckpt \
