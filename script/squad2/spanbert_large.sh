@@ -27,7 +27,7 @@ if [[ $1 == "tpu" ]]; then
     --predict_file=$SQUAD_DIR/dev-v2.0.json \
     --train_batch_size=8 \
     --learning_rate=1e-5 \
-    --num_train_epochs=4.0 \
+    --num_train_epochs=2.0 \
     --max_seq_length=384 \
     --do_lower_case=False \
     --doc_stride=128 \
